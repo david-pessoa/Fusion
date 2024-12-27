@@ -14,18 +14,21 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-class Servico(Base):
-    # ('Nome salvo banco de dados', 'Nome exibido no django admin')
-    ICONE_CHOICES = (
-        ('ln-cog', 'Engrenagem'),
-        ('lni-statis-up', 'Gráfico'),
-        ('lni-user', 'Usuários'),
+class Icones:
+    CHOICES = (
+        ('lni-cog', 'Engrenagem'),
+        ('lni-stats-up', 'Gráfico'),
+        ('lni-users', 'Usuários'),
         ('lni-layers', 'Design'),
         ('lni-mobile', 'Mobile'),
         ('lni-rocket', 'Foguete'),
+        ('lni-leaf', 'Folha'),
+        ('lni-laptop-phone', 'Dispositivos'),
     )
 
-    icone = models.CharField("ícone", max_length=13, choices=ICONE_CHOICES)
+class Servico(Base):
+    # ('Nome salvo banco de dados', 'Nome exibido no django admin')
+    icone = models.CharField("ícone", max_length=16, choices=Icones.CHOICES)
     servico = models.CharField("Nome do Serviço", max_length=100)
     descricao = models.TextField("Descrição", max_length=500)
 
@@ -58,6 +61,18 @@ class Funcionario(Base):
     class Meta:
         verbose_name = "Funcionário"
         verbose_name_plural = "Funcionários"
+    
+    def __str__(self):
+        return self.nome
+
+class Feature(Base):
+    icone = models.CharField("Ícone", max_length=16, choices=Icones.CHOICES)
+    nome = models.CharField("Nome", max_length=50)
+    descricao = models.TextField("Descrição", max_length=100)
+
+    class Meta: 
+        verbose_name = "Feature"
+        verbose_name_plural = "Features"
     
     def __str__(self):
         return self.nome
