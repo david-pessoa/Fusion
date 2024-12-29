@@ -20,4 +20,14 @@
         </div>
       </div> 
     </div> 
+    <div class="container">
+      {% if messages %}
+        {% for m in messages %}
+          <div class="altert aler-{{ m.tags }}">
+            <button type="button" class="close" data-dismiss="altert"></button>
+            <strong>{{ m }}</strong>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
