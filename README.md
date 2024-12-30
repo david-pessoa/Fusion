@@ -42,8 +42,8 @@ psql
 
 Crie o banco, e um usuário com privilégios
 ```sh
-create database nome_banco; # No caso do tutorial, nome_banco será "asset_mobility_dev"
-create user nome_usuario with encrypted password 'senha_dentro_das_aspas_simples'; # No caso do tutorial, nome_usuario será "asset_mobility_dev_user", e a senha será "asset_mobility_dev_password"
+create database nome_banco;
+create user nome_usuario with encrypted password 'senha_dentro_das_aspas_simples';
 grant all privileges on database nome_banco to nome_usuario;
 \q
 ```
