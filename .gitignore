@@ -3,5 +3,10 @@ __pycache__
 /venv
 
 db.sqlite3
+dump.sql
 
 .env
+
+/htmlcov
+
+.coverage

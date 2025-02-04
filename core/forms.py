@@ -15,7 +15,7 @@ class ContatoForm(forms.Form):
 
         conteudo = f"Nome: {nome}\nE-mail: {email}\nAssunto: {subject}\nMensagem: {message}"
         mail = EmailMessage(
-            nome=nome,
+            subject=nome,
             body=conteudo,
             from_email='contato@fusion.com.br', #Remetente
             to=['contato@fusion.com.br',], #Especifica o destinatário

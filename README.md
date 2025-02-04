@@ -4,7 +4,9 @@
 Este projeto tem apenas o intuito de ser um estudo para meu aprimoramento no Django. Ele consiste numa página de uma empresa fictícia construída a partir de um template obtido da <a href="https://uideck.com/">UIdeck</a>.
 
 ## Como instalar
-Caso deseje instalar a aplicação, primeiro é necessário clonar o repositório
+Caso deseje instalar a aplicação, antes é necessário possuir instalados em sua máquina:
+* <a href="https://www.python.org/downloads/">Python 3.12 ou superior</a>
+* <a href="https://www.postgresql.org/download/">PostgresSQL</a>
 
 ### 1) Clone o repositório e entre no diretório Fusion
 ```sh
@@ -33,7 +35,7 @@ pip install -r requirements.txt
 ```
 
 ### 4) Crie o banco de dados em SQL com PostgreSQL
-Após <a href="https://www.postgresql.org/download/">instalar</a> o PostgresSQL, será necessário criar o banco de dados. Para isso, acesse o postgres pelo usuário `postgres`
+Agora, será necessário criar o banco de dados. Para isso, acesse o postgres pelo usuário `postgres`
 ```sh
 sudo -i -u postgres
 # Acesso ao postgres
