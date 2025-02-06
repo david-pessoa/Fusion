@@ -9,7 +9,7 @@ from core.models import Feature, Funcionario, Servico, Plano, Depoimento
 class IndexView(FormView):
     template_name = 'index.html'
     form_class = ContatoForm
-    succes_url = reverse_lazy('index')
+    success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
         features =  list(Feature.objects.all())
@@ -27,13 +27,13 @@ class IndexView(FormView):
         context['range_five'] = range(1, 6)
         return context
     
-    def form_valid(self, form, *args, **kwargs):
+    def form_valid(self, form):
         form.send_mail()
         messages.success(self.request, "Formulário enviado com sucesso")
-        return super(IndexView, self).form_valid(self, form, *args, **kwargs)
+        return super().form_valid(form)
     
-    def form_invalid(self, form, *args, **kwargs):
+    def form_invalid(self, form):
         messages.error(self.request, "Não foi possível enviar o formulário. Verifique os dados e tente novamente")
-        return super(IndexView, self).form_invalid(self, form, *args, **kwargs)
+        return super().form_invalid(form)
 
 

@@ -21,5 +21,5 @@ class IndexViewTestCase(TestCase):
             'nome': 'Felicidades Jéssica',
             'assunto': 'Meu assunto'
         }
-        request = self.cliente.post(reverse_lazy('index'), data=self.dados)
+        request = self.cliente.post(reverse_lazy('index'), data=dados)
         self.assertEqual(request.status_code, 200)
