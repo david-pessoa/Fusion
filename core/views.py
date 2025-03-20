@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.views.generic import TemplateView, FormView
 from core.forms import ContatoForm
 from core.models import Feature, Funcionario, Servico, Plano, Depoimento
+from django.utils.translation import gettext as _
+from django.utils import translation
 
 class IndexView(FormView):
     template_name = 'index.html'
@@ -18,6 +20,10 @@ class IndexView(FormView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['funcionarios'] = Funcionario.objects.all()
         context['servicos'] = Servico.objects.order_by('?').all()
+
+        lang = translation.get_language()
+        context['lang'] = lang
+        translation.activate(lang)
         
         context['features_left'] = features[:midpoint]
         context['features_right'] = features[midpoint:]
@@ -29,11 +35,11 @@ class IndexView(FormView):
     
     def form_valid(self, form):
         form.send_mail()
-        messages.success(self.request, "Formulário enviado com sucesso")
+        messages.success(self.request, _("Formulário enviado com sucesso"))
         return super().form_valid(form)
     
     def form_invalid(self, form):
-        messages.error(self.request, "Não foi possível enviar o formulário. Verifique os dados e tente novamente")
+        messages.error(self.request, _("Não foi possível enviar o formulário. Verifique os dados e tente novamente"))
         return super().form_invalid(form)
 
 
